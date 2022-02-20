@@ -1,14 +1,5 @@
 import tensorflow as tf
 
-try:
-    from google.colab import drive
-    drive.mount('/content/drive', force_remount=True)
-    COLAB = True
-    print("Note: using Google CoLab")
-except:
-    print("Note: not using Google CoLab")
-    COLAB = False
-
 ROOT_CAPTIONING = None
 START_TOKEN = "startseq"
 STOP_TOKEN = "endseq"
@@ -41,8 +32,3 @@ AUTOTUNE = tf.data.AUTOTUNE
 WIDTH = 299
 HEIGHT = 299
 OUTPUT_DIM = 1000
-
-if COLAB:
-    ROOT_CAPTIONING = "/content/drive/My Drive/projects/captions"
-else:
-    ROOT_CAPTIONING = "./data/captions"

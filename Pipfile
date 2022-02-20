@@ -8,6 +8,7 @@ tensorflow = "*"
 tqdm = "*"
 pillow = "*"
 matplotlib = "*"
+streamlit = "*"
 
 [dev-packages]
 
