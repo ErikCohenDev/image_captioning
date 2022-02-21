@@ -80,7 +80,7 @@ def clear_caption_state():
     st.session_state.caption = None
 
 def main():
-    uploaded_file = st.file_uploader("Choose a file", type='jpeg,jpg,png', on_change=clear_caption_state)
+    uploaded_file = st.file_uploader("Choose a file", type=['jpeg','jpg','png'], on_change=clear_caption_state)
     if uploaded_file is not None:
         # To read file as bytes:
         image = Image.open(uploaded_file)
@@ -106,10 +106,10 @@ def main():
     with open('bleu-scores.json', 'r') as fp:
         bleu_scores = json.load(fp)
         df = pd.DataFrame.from_dict(bleu_scores)
-        df['bleu_score'] = df['bleu_score'].multiply(10).round(decimals = 3)
+        df['bleu_score'] = df['bleu_score'].multiply(100).round(decimals = 5)
         df = df.dropna(subset=['bleu_score'])
-        bins = [2, 3, 4, 5, 6, 7, 8]
-        labels = [2, 3, 4, 5, 6, 7]
+        bins = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+        labels = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
         df['binned'] = pd.cut(df['bleu_score'], bins=bins, labels=labels)
         scatterplot = alt.Chart(df).mark_circle(size=50).encode(
             x='bleu_score',

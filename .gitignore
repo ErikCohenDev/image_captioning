@@ -259,7 +259,6 @@ dmypy.json
 .prof
 
 # misc
-*.json
 .DS_Store
 *.key
 keynote-images
