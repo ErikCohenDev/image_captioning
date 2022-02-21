@@ -42,7 +42,6 @@ with open(os.path.join(root_captioning, 'Flickr8k_text',
             id = tok[0].split('.')[0]
             desc = tok[1:]
 
-            # Cleanup description
             desc = [word.lower() for word in desc]
             desc = [w.translate(null_punct) for w in desc]
             desc = [word for word in desc if len(word) > 1]

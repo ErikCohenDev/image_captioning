@@ -9,6 +9,7 @@ tqdm = "4.62.3"
 pillow = "9.0.1"
 streamlit = "1.5.1"
 nltk = "3.7"
+altair = "4.2.0"
 
 [dev-packages]
 
