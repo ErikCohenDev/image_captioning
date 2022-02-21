@@ -20,7 +20,7 @@ from tensorflow.keras import Input
 
 START = "startseq"
 STOP = "endseq"
-EPOCHS = 1
+EPOCHS = 30
 
 # Initialize
 root_captioning = "./data/captions"
@@ -226,7 +226,7 @@ if not os.path.exists(model_path):
     for i in tqdm(range(EPOCHS*2)):
         generator = data_generator(train_descriptions, encoding_train,
                                    wordtoidx, max_length, number_pics_per_bath)
-        caption_model.fit_generator(generator, epochs=1,
+        caption_model.fit(generator, epochs=1,
                                     steps_per_epoch=steps, verbose=1)
 
     caption_model.optimizer.lr = 1e-4
@@ -236,7 +236,7 @@ if not os.path.exists(model_path):
     for i in range(EPOCHS):
         generator = data_generator(train_descriptions, encoding_train,
                                    wordtoidx, max_length, number_pics_per_bath)
-        caption_model.fit_generator(generator, epochs=1,
+        caption_model.fit(generator, epochs=1,
                                     steps_per_epoch=steps, verbose=1)
     caption_model.save_weights(model_path)
 else:
