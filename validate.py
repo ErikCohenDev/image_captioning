@@ -26,5 +26,4 @@ for image_id in encoding_test:
     )
     cumulative_bleu_score += bleu_score
 
-print('cumulative_bleu_score: ', cumulative_bleu_score / encoding_test.size)
-breakpoint()
+print('cumulative_bleu_score: ', cumulative_bleu_score / len(encoding_test.keys()))
